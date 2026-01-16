@@ -10,3 +10,13 @@ export const fetchStats = createAsyncThunk(
         return response.data
     }
 )
+
+const salesSlace = createSlice({
+    name: 'sales',
+    initialState: {
+        items: [],
+        loading: false,
+        error: null,
+    },
+    reducers: {},
+})
