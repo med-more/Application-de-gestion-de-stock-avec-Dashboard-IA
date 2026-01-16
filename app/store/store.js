@@ -15,3 +15,10 @@ export const selectSalesError = (state) => state.sales.error
 export const selectTotalStock = (state) => {
     return state.products.items.reduce((total, product) => total + product.quantity, 0)
 }
+
+export const selectTotalStockValue = (state) => {
+    return state.products.items.reduce(
+        (total, product) => total + product.quantity * product.price,
+        0
+    )
+}
