@@ -22,3 +22,14 @@ export const selectTotalStockValue = (state) => {
         0
     )
 }
+
+export const selectTotalProductsSold = (state) => {
+    return state.sales.items.reduce((total, sale) => total + sale.quantity, 0)
+}
+
+export const selectTotalSalesValue = (state) => {
+    return state.sales.items.reduce((total, sale) => total + sale.totalPrice, 0)
+}
+
+export const selectSalesByCategory = (state, categoy) =>
+    state.sales.items.filter((sale) => sale.categoy === categoy)
