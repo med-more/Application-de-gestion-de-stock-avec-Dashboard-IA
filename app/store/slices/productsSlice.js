@@ -59,5 +59,54 @@ const productSlice = createSlice({
         state.loading = false
         state.error = action.error.message
       })
-  }
+
+      builder
+      .addCase(addProduct.pending, (state) => {
+        state.loading = true
+        state.error = null
+      })
+      .addCase(addProduct.fulfilled, (state, action) => {
+        state.loading = false
+        state.items.push(action.payload)
+      })
+      .addCase(addProduct.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.error.message
+      })
+
+
+      builder
+      .addCase(updateProduct.pending, (state) => {
+        state.loading = true
+        state.error = null
+      })
+      .addCase(updateProduct.fulfilled, (state, action) => {
+        state.loading = false
+        const index = state.items.findIndex((item) => item.id === action.payload.id)
+        if (index !== -1) {
+          state.items[index] = action.payload
+        }
+      })
+      .addCase(updateProduct.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.error.message
+      })
+
+
+      builder
+      .addCase(deleteProduct.pending, (state) => {
+        state.loading = true
+        state.error = null
+      })
+      .addCase(deleteProduct.fulfilled, (state, action) => {
+        state.loading = false
+        state.items = state.items.filter((item) => item.id !== action.payload)
+      })
+      .addCase(deleteProduct.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.error.message
+      })
+  },
 })
+
+export default productSlice.reducer
