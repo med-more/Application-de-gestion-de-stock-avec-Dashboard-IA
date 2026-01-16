@@ -11,3 +11,12 @@ export const fetchProducts = createAsyncThunk(
     return response.data
   }
 )
+
+
+export const addProduct = createAsyncThunk(
+  'products/addProduct',
+  async (productData) => {
+    const response = await axios.post(`${API_URL}/products`, productData)
+    return response.data
+  }
+)
