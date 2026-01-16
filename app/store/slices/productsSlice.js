@@ -20,3 +20,11 @@ export const addProduct = createAsyncThunk(
     return response.data
   }
 )
+
+export const updateProduct = createAsyncThunk(
+  'products/updateProduct',
+  async({ id, ...productData }) => {
+    const response = await axios.put(`${API_URL}/products/${id}`, productData)
+    return response.data
+  }
+)
