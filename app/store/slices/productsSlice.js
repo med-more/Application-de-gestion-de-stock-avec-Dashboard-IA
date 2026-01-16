@@ -36,3 +36,13 @@ export const deleteProduct = createAsyncThunk(
     return id
   }
 )
+
+const productSlice = createSlice({
+  name: 'products',
+  initialState:{
+    items: [],
+    loading: false,
+    error: null,
+  },
+  reducers: {},
+})
