@@ -7,3 +7,7 @@ export const selectProductById = (state, productId) =>
 
 export const selectProductsByCategory = (state, categoy) => 
     state.products.items.filter((product) => product.categoy === categoy)
+
+export const selectAllSales = (state) => state.sales.items
+export const selectSalesLoading = (state) => state.sales.loading
+export const selectSalesError = (state) => state.sales.error
