@@ -17,10 +17,8 @@ import {
 import { Plus, Edit, Trash2, Search, Filter, X, ChevronDown } from 'lucide-react'
 import toast from 'react-hot-toast'
 
-const page = () => {
-  return (
-    <div>page</div>
+export default function ProductsPage() {
+    return (
+    <></>
   )
 }
-
-export default page
