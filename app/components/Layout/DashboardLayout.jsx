@@ -24,6 +24,10 @@ const DashboardLayout = () => {
   const toggleSidebar = () =>{
     setSidebarOpen(!sidebarOpen)
   }
+
+  const closeSidebar = () =>{
+    setSidebarOpen(false)
+  }
   return (
     <div>DashboardLayout</div>
   )
