@@ -20,6 +20,10 @@ const DashboardLayout = () => {
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
+
+  const toggleSidebar = () =>{
+    setSidebarOpen(!sidebarOpen)
+  }
   return (
     <div>DashboardLayout</div>
   )
