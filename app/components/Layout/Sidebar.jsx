@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { useParams } from "next/navigation"
+import { useParams, usePathname } from "next/navigation"
 import {
   LayoutDashboard,
   Package,
@@ -28,6 +28,19 @@ const menuItems = [
   },
 ]
 const Sidebar = () => {
+  const pathname = usePathname()
+  const [expandedItems, setExpandedItems] = useState(['Products'])
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() =>{
+    const checkMobile = () =>{
+      setIsMobile(window.innerWidth < 1024)
+    }
+
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
   return (
     <div>Sidebar</div>
   )
