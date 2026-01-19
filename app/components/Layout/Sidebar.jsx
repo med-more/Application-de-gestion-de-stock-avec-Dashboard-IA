@@ -10,6 +10,23 @@ import {
   BarChart3,
   Zap
 } from 'lucide-react'
+
+const menuItems = [
+  {
+    title: 'Dashboard',
+    icon: LayoutDashboard,
+    href: '/',
+  },
+  {
+    title: 'Products',
+    icon: Package,
+    href: '/products',
+    items: [
+      { title: 'List', href: '/products' },
+      { title: 'Create', href: '/products/new' },
+    ],
+  },
+]
 const Sidebar = () => {
   return (
     <div>Sidebar</div>
