@@ -108,6 +108,11 @@ export default function ProductsPage() {
     ...product,
     sales: Math.floor(Math.random() * 500) + 100,
   }))
+
+  const totalPages = Math.ceil(productsWithSales.length / itemsPerPage)
+  const startIndex = (currentPage - 1) * itemsPerPage
+  const endIndex = startIndex + itemsPerPage
+  const paginatedProducts = productsWithSales.slice(startIndex, endIndex)
     return (
     <></>
   )
