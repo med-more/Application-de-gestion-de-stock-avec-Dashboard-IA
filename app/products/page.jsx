@@ -64,6 +64,18 @@ export default function ProductsPage() {
     
     return matchesSearch && matchesCategory && matchesMinPrice && matchesMaxPrice && matchesMinQuantity && matchesMaxQuantity
   })
+
+  filteredProducts = [...filteredProducts].sort((a, b) => {
+    let comparison = 0
+    if (filters.sortBy === 'name') {
+      comparison = a.name.localeCompare(b.name)
+    } else if (filters.sortBy === 'quantity') {
+      comparison = a.quantity - b.quantity
+    } else if (filters.sortBy === 'price') {
+      comparison = a.price - b.price
+    }
+    return filters.sortOrder === 'asc' ? comparison : -comparison
+  })
     return (
     <></>
   )
