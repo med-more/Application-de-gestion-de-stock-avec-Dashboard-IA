@@ -26,6 +26,8 @@ const page = () => {
   const loading = useSelector(selectProductsLoading)
   const [isEditing, setIsEditing] = useState(false)
   const [deleteModal, setDeleteModal] = useState(false)
+
+  
   return (
     <div>page</div>
   )
