@@ -50,6 +50,30 @@ const page = () => {
       toast.error('Erreur lors de la suppression')
     }
   }
+
+  if (loading && !product) {
+    return (
+      <DashboardLayout>
+        <div className="text-center py-12 text-gray-500">Chargement...</div>
+      </DashboardLayout>
+    )
+  }
+
+  if (!product) {
+    return (
+      <DashboardLayout>
+        <div className="text-center py-12">
+          <p className="text-gray-500 mb-4">Produit non trouvé</p>
+          <Link
+            href="/products"
+            className="text-blue-600 hover:text-blue-700 font-medium"
+          >
+            Retour à la liste
+          </Link>
+        </div>
+      </DashboardLayout>
+    )
+  }
   return (
     <div>page</div>
   )
