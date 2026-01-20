@@ -53,6 +53,17 @@ export default function ProductsPage() {
       }
     }
   }
+
+  let filteredProducts = products.filter((product) => {
+    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    const matchesCategory = filters.category === 'Toutes' || product.category === filters.category
+    const matchesMinPrice = !filters.minPrice || product.price >= parseFloat(filters.minPrice)
+    const matchesMaxPrice = !filters.maxPrice || product.price <= parseFloat(filters.maxPrice)
+    const matchesMinQuantity = !filters.minQuantity || product.quantity >= parseInt(filters.minQuantity)
+    const matchesMaxQuantity = !filters.maxQuantity || product.quantity <= parseInt(filters.maxQuantity)
+    
+    return matchesSearch && matchesCategory && matchesMinPrice && matchesMaxPrice && matchesMinQuantity && matchesMaxQuantity
+  })
     return (
     <></>
   )
