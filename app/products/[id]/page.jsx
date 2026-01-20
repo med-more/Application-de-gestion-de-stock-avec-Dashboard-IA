@@ -27,7 +27,9 @@ const page = () => {
   const [isEditing, setIsEditing] = useState(false)
   const [deleteModal, setDeleteModal] = useState(false)
 
-  
+  useEffect(() => {
+    dispatch(fetchProductsAction())
+  }, [dispatch])
   return (
     <div>page</div>
   )
