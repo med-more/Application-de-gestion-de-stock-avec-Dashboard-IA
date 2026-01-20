@@ -37,6 +37,22 @@ export default function ProductsPage() {
   })
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(10)
+
+  useEffect(() =>{
+    dispatch(fetchProductsAction())
+  }, [dispatch])
+
+  const handleDelete = async () => {
+    if (deleteModal.product) {
+      try {
+        await dispatch(deleteProduct(deleteModal.product.id)).unwrap()
+        toast.success('Produit supprimé avec succès')
+        setDeleteModal({ isOpen: false, product: null })
+      } catch (error) {
+        toast.error('Erreur lors de la suppression')
+      }
+    }
+  }
     return (
     <></>
   )
