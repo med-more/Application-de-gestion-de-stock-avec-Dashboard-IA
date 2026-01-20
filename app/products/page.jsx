@@ -18,6 +18,25 @@ import { Plus, Edit, Trash2, Search, Filter, X, ChevronDown } from 'lucide-react
 import toast from 'react-hot-toast'
 
 export default function ProductsPage() {
+  const dispatch = useDispatch()
+  const router = useRouter()
+  const products = useSelector(selectProducts)
+  const loading = useSelector(selectProductsLoading)
+  const [searchTerm, setSearchTerm] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState('Tous')
+  const [sortBy, setSortBy] = useState('name')
+  const  [deleteModal, setDeleteModal] = useState({ isOpen: false, product: null })
+    const [filters, setFilters] = useState({
+    category: 'Toutes',
+    minPrice: '',
+    maxPrice: '',
+    minQuantity: '',
+    maxQuantity: '',
+    sortBy: 'name',
+    sortOrder: 'asc'
+  })
+  const [currentPage, setCurrentPage] = useState(1)
+  const [itemsPerPage, setItemsPerPage] = useState(10)
     return (
     <></>
   )
