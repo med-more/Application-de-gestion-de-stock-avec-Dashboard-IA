@@ -103,6 +103,11 @@ export default function ProductsPage() {
   }
 
   const categories = ['Toutes', ...new Set(products.map((product) => product.category))]
+
+  const productsWithSales = filteredProducts.map((product) => ({
+    ...product,
+    sales: Math.floor(Math.random() * 500) + 100,
+  }))
     return (
     <></>
   )
