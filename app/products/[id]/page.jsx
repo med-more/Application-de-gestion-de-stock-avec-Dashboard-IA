@@ -30,6 +30,16 @@ const page = () => {
   useEffect(() => {
     dispatch(fetchProductsAction())
   }, [dispatch])
+
+  const handleUpdate = async (formData) =>{
+    try {
+      await dispatch(updateProduct({ id: parseInt(productId), ...formData })).unwrap()
+      toast.success('Produit modifié avec succès')
+      setIsEditing(false)
+    } catch (error) {
+      toast.error('Erreur lors de la modification')
+    }
+  }
   return (
     <div>page</div>
   )
