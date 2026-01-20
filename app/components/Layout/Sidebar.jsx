@@ -41,6 +41,22 @@ const Sidebar = () => {
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
+
+  const toggleExpand = (title) => {
+    setExpandedItems((prev) =>
+    prev.includes(title)
+    ? prev.filter((item) => item !== title)
+    : [...prev, title]
+    )
+  }
+
+  const isActive = (href) => {
+    if(href === '/'){
+      return pathname === '/'
+    }
+    return pathname?.startsWith(href)
+  }
+
   return (
     <div>Sidebar</div>
   )
