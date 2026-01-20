@@ -76,6 +76,33 @@ export default function ProductsPage() {
     }
     return filters.sortOrder === 'asc' ? comparison : -comparison
   })
+
+  const resetFilters = () => {
+    setFilters({
+      category: 'Toutes',
+      minPrice: '',
+      maxPrice: '',
+      minQuantity: '',
+      maxQuantity: '',
+      sortBy: 'name',
+      sortOrder: 'asc'
+    })
+    setSearchTerm('')
+  }
+
+  const activeFiltersCount = () => {
+    let count = 0
+    if (filters.category !== 'Toutes') count++
+    if (filters.minPrice) count++
+    if (filters.maxPrice) count++
+    if (filters.minQuantity) count++
+    if (filters.maxQuantity) count++
+    if (filters.sortBy !== 'name') count++
+    if (filters.sortOrder !== 'asc') count++
+    return count
+  }
+
+  const categories = ['Toutes', ...new Set(products.map((product) => product.category))]
     return (
     <></>
   )
