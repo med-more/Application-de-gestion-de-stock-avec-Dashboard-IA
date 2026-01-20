@@ -18,6 +18,14 @@ import { ArrowLeft, Trash2, Edit } from 'lucide-react'
 import toast from 'react-hot-toast'
 
 const page = () => {
+  const dispatch = useDispatch()
+  const router = useRouter()
+  const params = useParams()
+  const productId = params.id
+  const product = useSelector((state) => selectProductById(state, productId))
+  const loading = useSelector(selectProductsLoading)
+  const [isEditing, setIsEditing] = useState(false)
+  const [deleteModal, setDeleteModal] = useState(false)
   return (
     <div>page</div>
   )
