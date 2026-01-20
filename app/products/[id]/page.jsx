@@ -40,6 +40,16 @@ const page = () => {
       toast.error('Erreur lors de la modification')
     }
   }
+
+  const handleDelete = async () => {
+    try {
+      await dispatch(deleteProduct(parseInt(productId))).unwrap()
+      toast.success('Produit supprimé avec succès')
+      router.push('/products')
+    } catch (error) {
+      toast.error('Erreur lors de la suppression')
+    }
+  }
   return (
     <div>page</div>
   )
