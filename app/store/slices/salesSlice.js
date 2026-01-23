@@ -4,22 +4,22 @@ import axios from "axios"
 const API_URL = 'http://localhost:3001'
 
 export const fetchSales = createAsyncThunk(
-    'sales/fetchSales',
-    async () => {
-        const response = await axios.get(`${API_URL}/sales`)
-        return response.data
-    }
+  'sales/fetchSales',
+  async () => {
+    const response = await axios.get(`${API_URL}/sales`)
+    return response.data
+  }
 )
 
 const salesSlace = createSlice({
-    name: 'sales',
-    initialState: {
-        items: [],
-        loading: false,
-        error: null,
-    },
-    reducers: {},
-    extraReducers: (builder) => {
+  name: 'sales',
+  initialState: {
+    items: [],
+    loading: false,
+    error: null,
+  },
+  reducers: {},
+  extraReducers: (builder) => {
     builder
       .addCase(fetchSales.pending, (state) => {
         state.loading = true
@@ -35,3 +35,5 @@ const salesSlace = createSlice({
       })
   },
 })
+
+export default salesSlace.reducer
