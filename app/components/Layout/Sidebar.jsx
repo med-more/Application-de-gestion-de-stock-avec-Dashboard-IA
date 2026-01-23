@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { useParams, usePathname } from "next/navigation"
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import {
   LayoutDashboard,
   Package,
@@ -27,16 +27,18 @@ const menuItems = [
     ],
   },
 ]
-const Sidebar = () => {
+
+export default function Sidebar({ isOpen, onClose, onToggle }) {
   const pathname = usePathname()
   const [expandedItems, setExpandedItems] = useState(['Products'])
   const [isMobile, setIsMobile] = useState(false)
 
-  useEffect(() =>{
-    const checkMobile = () =>{
+
+  useEffect(() => {
+    const checkMobile = () => {
       setIsMobile(window.innerWidth < 1024)
     }
-
+    
     checkMobile()
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
@@ -44,22 +46,24 @@ const Sidebar = () => {
 
   const toggleExpand = (title) => {
     setExpandedItems((prev) =>
-    prev.includes(title)
-    ? prev.filter((item) => item !== title)
-    : [...prev, title]
+      prev.includes(title)
+        ? prev.filter((item) => item !== title)
+        : [...prev, title]
     )
   }
 
   const isActive = (href) => {
-    if(href === '/'){
+    if (href === '/') {
       return pathname === '/'
     }
     return pathname?.startsWith(href)
   }
 
+  const sidebarWidth = isOpen ? 'w-64' : 'w-20'
+
   return (
     <>
-
+    
       {isOpen && isMobile && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden transition-opacity duration-300"
@@ -243,5 +247,3 @@ const Sidebar = () => {
     </>
   )
 }
-
-export default Sidebar
